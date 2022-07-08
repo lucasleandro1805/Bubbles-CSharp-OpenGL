@@ -32,12 +32,6 @@ namespace Bubbles.Surface
             Engine.Start(Location.X, Location.Y, stopEvent, KeyboardState);
         }
 
-        // This function runs on every update frame.
-        protected override void OnUpdateFrame(FrameEventArgs e)
-        {
-            base.OnUpdateFrame(e);
-        }
-
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             base.OnRenderFrame(args);

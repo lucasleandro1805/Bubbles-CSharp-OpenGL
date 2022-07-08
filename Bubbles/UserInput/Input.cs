@@ -44,10 +44,12 @@ namespace Bubbles.UserInput
         {
             return mouse.GetMouseY();
         }
+
         public static bool IsMouseDown()
         {
             return mouse.IsMouseDown();
         }
+
         public static bool IsMousePressed()
         {
             return mouse.IsMousePressed();

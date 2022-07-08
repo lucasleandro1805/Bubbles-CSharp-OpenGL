@@ -27,6 +27,7 @@ namespace Bubbles.Core
 
         public static void Update(float locX, float locY, float sizeX, float sizeY)
         {
+            Screen.loc.Set(locX, locY);
             Screen.size.Set(sizeX, sizeY);
             Time.Update();
             Input.Update();
