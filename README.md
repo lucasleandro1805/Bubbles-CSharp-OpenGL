@@ -8,5 +8,5 @@
 My first experience with OpenGL on Windows and also the first time developing OpenGL with C#, until then I was always developing for Android using Java.
 </p>
 <p>
-This project helped me understand the implementation of OpenGL in a form of desktop software.
+This project helped me understand the implementation of OpenGL in a .net window form.
 </p>
