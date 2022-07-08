@@ -51,7 +51,7 @@ namespace Bubbles.Render
                 for (int i = 0; i < Game.waves.Count; i++)
                 {
                     Wave wave = Game.waves[i];
-                    Binder.uniform("screenSize" , Screen.size     , cursorShader);
+                    Binder.uniform("screenSize" , Screen.size     , waveShader);
                     Binder.uniform("loc"        , wave.loc        , waveShader);
                     Binder.uniform("start"      , wave.start      , waveShader);
                     Binder.uniform("end"        , wave.end        , waveShader);
