@@ -13,21 +13,37 @@ namespace Bubbles.Render
         public static void uniform(string name, float x, float y, Shader shader)
         {
             int loc = shader.GetUniformlocation(name);
+            if(loc < 0)
+            {
+                throw new Exception("Uniform not found on the shader!");
+            }
             GL.Uniform2(loc, x, y);
         }
         public static void uniform(string name, float x, Shader shader)
         {
             int loc = shader.GetUniformlocation(name);
+            if (loc < 0)
+            {
+                throw new Exception("Uniform not found on the shader!");
+            }
             GL.Uniform1(loc, x);
         }
         public static void uniform(string name, Vectors.Color color, Shader shader)
         {
             int loc = shader.GetUniformlocation(name);
+            if (loc < 0)
+            {
+                throw new Exception("Uniform not found on the shader!");
+            }
             GL.Uniform4(loc, color.r, color.g, color.b, color.a);
         }
         public static void uniform(string name, Vec2 vec, Shader shader)
         {
             int loc = shader.GetUniformlocation(name);
+            if (loc < 0)
+            {
+                throw new Exception("Uniform not found on the shader!");
+            }
             GL.Uniform2(loc, vec.x, vec.y);
         }
     }
