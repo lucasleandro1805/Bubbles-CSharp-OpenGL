@@ -23,7 +23,7 @@ void main()
     if(distFactor > 1.0){
         discard;
     }
-    float light = clamp(distFactor, 0.0, 1.0);
+    float light = distFactor;
     light *= 1.0 - (lifetime / maxLifetime);
 
     outputColor = color * light;
