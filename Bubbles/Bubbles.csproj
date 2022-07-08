@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Shaders\Cursor\fragment" />
+    <None Remove="Shaders\Cursor\vertex" />
+    <None Remove="Shaders\Wave\fragment" />
+    <None Remove="Shaders\Wave\vertex" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\Cursor\fragment" />
+    <EmbeddedResource Include="Shaders\Cursor\vertex" />
+    <EmbeddedResource Include="Shaders\Wave\fragment" />
+    <EmbeddedResource Include="Shaders\Wave\vertex" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.7.4" />
+  </ItemGroup>
+
+</Project>

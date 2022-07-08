@@ -1,0 +1,30 @@
+#version 330
+
+uniform vec2 screenSize;
+uniform vec2 loc;
+uniform float start;
+uniform float end;
+uniform vec4 color;
+uniform float lifetime;
+uniform float maxLifetime;
+
+in vec2 o_uv;
+out vec4 outputColor;
+
+void main()
+{
+    vec2 coords = screenSize * o_uv;
+    float dist = length(loc - coords);
+    dist -= start;
+    if(dist < 0.0){
+        discard;
+    }
+    float distFactor = dist / (end - start);
+    if(distFactor > 1.0){
+        discard;
+    }
+    float light = clamp(distFactor, 0.0, 1.0);
+    light *= 1.0 - (lifetime / maxLifetime);
+
+    outputColor = color * light;
+}
