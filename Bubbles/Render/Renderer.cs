@@ -13,6 +13,7 @@ using Bubbles.Utils;
 using Bubbles.VOS;
 using Screen = Bubbles.Surface.Screen;
 using Bubbles.UserInput;
+using Bubbles.Vectors;
 
 namespace Bubbles.Render
 {
@@ -21,6 +22,7 @@ namespace Bubbles.Render
         private static Shader cursorShader;
         private static Shader waveShader;
         private static FSQ fsq;
+        private static readonly Vec2 tmpMP = new Vec2();
 
         public static void Start()
         {
@@ -38,9 +40,9 @@ namespace Bubbles.Render
 
             if (cursorShader.BeginRender())
             {
-                Binder.uniform("screenSize", Screen.size, cursorShader);
-                Binder.uniform("cursor", Input.GetMouseX(), Input.GetMouseY(), cursorShader);
-                Binder.uniform("color", Game.cursorColor, cursorShader);
+                Binder.uniform("screenSize", Screen.size                  , cursorShader);
+                Binder.uniform("cursor"    , Input.GetMousePosition(tmpMP), cursorShader);
+                Binder.uniform("color"     , Game.cursorColor             , cursorShader);
                 fsq.Draw();
                 cursorShader.StopRender();
             }
@@ -49,12 +51,12 @@ namespace Bubbles.Render
                 for (int i = 0; i < Game.waves.Count; i++)
                 {
                     Wave wave = Game.waves[i];
-                    Binder.uniform("screenSize", Screen.size, cursorShader);
-                    Binder.uniform("loc", wave.loc, waveShader);
-                    Binder.uniform("start", wave.start, waveShader);
-                    Binder.uniform("end", wave.end, waveShader);
-                    Binder.uniform("color", wave.color, waveShader);
-                    Binder.uniform("lifetime", wave.lifetime, waveShader);
+                    Binder.uniform("screenSize" , Screen.size     , cursorShader);
+                    Binder.uniform("loc"        , wave.loc        , waveShader);
+                    Binder.uniform("start"      , wave.start      , waveShader);
+                    Binder.uniform("end"        , wave.end        , waveShader);
+                    Binder.uniform("color"      , wave.color      , waveShader);
+                    Binder.uniform("lifetime"   , wave.lifetime   , waveShader);
                     Binder.uniform("maxLifetime", wave.maxLifeTime, waveShader);
                     fsq.Draw();
                 }

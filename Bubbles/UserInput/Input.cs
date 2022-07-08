@@ -35,6 +35,15 @@ namespace Bubbles.UserInput
             }
         }
 
+        public static Vec2 GetMousePosition()
+        {
+            return GetMousePosition(new Vec2());
+        }
+        public static Vec2 GetMousePosition(Vec2 outVec)
+        {
+            outVec.Set(GetMouseX(), GetMouseY());
+            return outVec;
+        }
         public static float GetMouseX()
         {
             return mouse.GetMouseX();
