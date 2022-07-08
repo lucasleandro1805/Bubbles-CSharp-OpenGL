@@ -1,7 +1,7 @@
 # Bubbles
 
 <h4>A simple bubbles renderer made with C# and OpenGL.</h4>
-![Alt Text](https://github.com/lucasleandro1805/Bubbles-CSharp-OpenGL/blob/master/image/showcase.gif?raw=true)
+![](https://github.com/lucasleandro1805/Bubbles-CSharp-OpenGL/blob/master/image/showcase.gif?raw=true)
 
 <p>
 My first experience with OpenGL on Windows and also the first time developing OpenGL with C#, until then I was always developing for Android using Java.
