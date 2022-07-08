@@ -48,6 +48,14 @@ namespace Bubbles.Render
             }
             if (waveShader.BeginRender())
             {
+                /**
+                 * Optimization idea
+                 * Implement a batching renderer.
+                 * Calling a draw call for every wave won't run fast.
+                 * Calculate how many uniform vectors the device support
+                 * then you send a array of waves every render pass
+                 * this way you can render a big quantity of waves per draw call.
+                 */
                 for (int i = 0; i < Game.waves.Count; i++)
                 {
                     Wave wave = Game.waves[i];
