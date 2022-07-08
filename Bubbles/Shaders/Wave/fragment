@@ -11,18 +11,35 @@ uniform float maxLifetime;
 in vec2 o_uv;
 out vec4 outputColor;
 
+// square root calculations are heavy and we won't need it
+// so we create a custom length method without sqrt.
+// with a cost of a small visual difference
+float sqrLength(vec2 v){
+    return v.x*v.x + v.y*v.y;
+}
+
 void main()
 {
+    // elevate values to match the squared length.
+    float squaredStart = start * start;
+    float squaredEnd = end * end;
+
     vec2 coords = screenSize * o_uv;
-    float dist = length(loc - coords);
-    dist -= start;
-    if(dist < 0.0){
+    float dist = sqrLength(loc - coords) - squaredStart;
+
+    if(dist < 0.0)
+    {
         discard;
     }
-    float distFactor = dist / (end - start);
-    if(distFactor > 1.0){
+
+    float range = squaredEnd - squaredStart;
+    float distFactor = dist / range;
+    
+    if(distFactor > 1.0)
+    {
         discard;
     }
+    
     float light = distFactor;
     light *= 1.0 - (lifetime / maxLifetime);
 

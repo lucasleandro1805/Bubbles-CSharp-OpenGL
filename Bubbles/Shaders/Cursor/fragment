@@ -7,12 +7,28 @@ uniform vec4 color;
 in vec2 o_uv;
 out vec4 outputColor;
 
+// square root calculations are heavy and we won't need it
+// so we create a custom length method without sqrt.
+// with a cost of a small visual difference
+float sqrLength(vec2 v){
+    return v.x*v.x + v.y*v.y;
+}
+
+
 void main()
 {
-    vec2 coords = screenSize * o_uv;
-    float dist = length(cursor - coords);
-    float distFactor = dist / 30.0;
-    float light = clamp(1.0 - distFactor, 0.0, 1.0);
+    // elevate values to match squared length
+    float cursorSize = 30.0 * 30.0;
 
+    vec2 coords = screenSize * o_uv;
+    float dist = sqrLength(cursor - coords);
+    float distFactor = dist / cursorSize;
+    
+    if(distFactor < 0.0 || distFactor > 1.0)
+    {
+        discard;    
+    }
+    
+    float light = 1.0 - distFactor;
     outputColor = color * light;
 }
